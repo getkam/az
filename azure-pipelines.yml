@@ -19,6 +19,24 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
+    python -m venv .venv
+    source venv/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Installing dependencies'
+
+- script: |
     echo "Running script..."
+    source .venv/bin/activate
     python main.py
-  displayName: 'Run main.py: Hello world'
+  displayName: 'Run main.py'
+  env:
+    API_KEY: $(API_KEY)
+
+- script: |
+    echo "Running tests..."
+    source .venv/bin/activate
+    pytest
+  displayName: "Run pytest"
+  env:
+    API_KEY: $(API_KEY)
