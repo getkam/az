@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  API_KEY: ${API_KEY}
+  API_KEY: $(API_KEY)
 
 steps:
 - task: UsePythonVersion@0
