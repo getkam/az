@@ -9,11 +9,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  ACR_NAME: 'devopslearningacr'
+  IMAGE_NAME: 'weather-app'
+  IMAGE_TAG: 'latest'
+
 steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.11'
-  displayName: 'Use Python $(python.version)'
+  displayName: 'Use Python 3.11'
 
 - script: |
     python -m venv .venv
@@ -37,3 +42,26 @@ steps:
   displayName: "Run pytest"
   env:
     API_KEY: $(API_KEY)
+
+#--------DOCKER-------------
+- task: Docker@2
+  displayName: 'Log in to ACR'
+  inputs:
+    command: login
+    containerRegistry: 'mg_conn'
+
+- task: Docker@2
+  displayName: 'Build Docker image'
+  inputs:
+    command: build
+    Dockerfile: 'Dockerfile'
+    tags: |
+      $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
+    repository: $(ACR_NAME).azurecr.io/$(IMAGE_NAME)
+
+- task: Docker@2
+  displayName: 'Push Docker image'
+  inputs:
+    command: push
+    tags: |
+      $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
