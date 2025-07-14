@@ -50,4 +50,4 @@ stages:
                 repository: 'weather-app'
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
-                tags: 'latest'
+                tags: '$(Build.BuildId)'
