@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  ACR_NAME: 'devopslearningacr'
+  ACR_NAME: 'devopslearningacr.azurecr.io'
   IMAGE_NAME: 'weather-app'
   IMAGE_TAG: 'latest'
 
@@ -44,7 +44,10 @@ steps:
     API_KEY: $(API_KEY)
 
 - script: |
-    echo "IMAGE TAG: $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)"
+    echo "ACR_NAME: $(ACR_NAME)
+    echo "IMAGE_NAME: $(IMAGE_NAME)
+    echo "IMAGE_TAG: $(IMAGE_TAG)
+    echo "IMAGE TAG: $(ACR_NAME)/$(IMAGE_NAME):$(IMAGE_TAG)"
     echo "REPOSITORY: $(IMAGE_NAME)"
   displayName: 'Debug: Check image tag values'
 
@@ -60,13 +63,11 @@ steps:
   inputs:
     command: build
     Dockerfile: 'Dockerfile'
-    tags: |
-      $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
+    tags: $(ACR_NAME)/$(IMAGE_NAME):$(IMAGE_TAG)
     repository: $(IMAGE_NAME)
 
 - task: Docker@2
   displayName: 'Push Docker image'
   inputs:
     command: push
-    tags: |
-      $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
+    tags: $(ACR_NAME)/$(IMAGE_NAME):$(IMAGE_TAG)
