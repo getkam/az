@@ -55,7 +55,7 @@ steps:
   inputs:
     command: build
     Dockerfile: 'Dockerfile'
-    repository: 'devopslearningacr.azurecr.io/weather-app'
+    repository: 'weather-app'
     tags: |
       latest
 
@@ -63,6 +63,6 @@ steps:
   displayName: 'Push Docker image'
   inputs:
     command: push
-    repository: 'devopslearningacr.azurecr.io/weather-app'
+    repository: 'weather-app'
     tags: |
       latest
