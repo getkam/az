@@ -60,8 +60,12 @@ steps:
   inputs:
     command: build
     Dockerfile: 'Dockerfile'
-    tags: 'devopslearningacr.azurecr.io/weather-app:latest'
+    tags: 'weather-app:latest'
     repository: 'weather-app'
+
+- script: |
+        docker tag weather-app:latest devopslearningacr.azurecr.io/weather-app:latest
+  displayName: 'Retag a image to contain full acr name'
 
 - task: Docker@2
   displayName: 'Push Docker image'
