@@ -44,6 +44,9 @@ steps:
     API_KEY: $(API_KEY)
 
 #--------DOCKER-------------
+
+
+
 - task: Docker@2
   displayName: 'Log in to ACR'
   inputs:
@@ -51,18 +54,25 @@ steps:
     containerRegistry: 'mg_conn'
 
 - task: Docker@2
-  displayName: 'Build Docker image'
   inputs:
-    command: build
-    Dockerfile: 'Dockerfile'
+    containerRegistry: 'mg_conn'
     repository: 'weather-app'
-    tags: |
-      latest
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
-- task: Docker@2
-  displayName: 'Push Docker image'
-  inputs:
-    command: push
-    repository: 'weather-app'
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: 'Build Docker image'
+#   inputs:
+#     command: build
+#     Dockerfile: 'Dockerfile'
+#     repository: 'weather-app'
+#     tags: |
+#       latest
+
+# - task: Docker@2
+#   displayName: 'Push Docker image'
+#   inputs:
+#     command: push
+#     repository: 'weather-app'
+#     tags: |
+#       latest
