@@ -44,3 +44,10 @@ stages:
               inputs:
                 containerRegistry: 'mg_conn'
                 command: 'login'
+            - task: Docker@2
+              inputs:
+                containerRegistry: 'mg_conn'
+                repository: 'devopslearningacr'
+                command: 'buildAndPush'
+                Dockerfile: '**/Dockerfile'
+                tags: 'latest'
