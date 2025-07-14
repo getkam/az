@@ -6,8 +6,8 @@ trigger:
 stages:
     - stage: Build
       jobs:
-        - job: build_and_test
-          displayName: Build and Test
+        - job: build
+          displayName: Build
           steps:
               - task: UsePythonVersion@0
                 inputs:
@@ -26,10 +26,15 @@ stages:
                 displayName: 'Run main.py'
                 env:
                   API_KEY: $(API_KEY)
+    - stage: Test
+      jobs:
+        - job: test
+          displayName: Test
+          steps:
               - script: |
                   echo "Running tests..."
                   source .venv/bin/activate
                   pytest
                 displayName: "Run pytest"
                 env:
-                  API_KEY: $(API_KEY)
+                  API_KEY: $(API_KEY)  
