@@ -34,3 +34,13 @@ stages:
                 displayName: "Run pytest"
                 env:
                   API_KEY: $(API_KEY)  
+    - stage: Docker_build_and_push
+      displayName: Docker build and Push
+      jobs:
+        - job: docker_build_and_push
+          displayName: Docker build and push
+          steps:
+            - task: Docker@2
+              inputs:
+                containerRegistry: 'mg_conn'
+                command: 'login'
