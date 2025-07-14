@@ -60,7 +60,7 @@ steps:
   inputs:
     command: build
     Dockerfile: 'Dockerfile'
-    tags: 'weather-app:latest'
+    tags: 'latest'
     repository: 'weather-app'
 
 - script: |
