@@ -47,7 +47,7 @@ stages:
             - task: Docker@2
               inputs:
                 containerRegistry: 'mg_conn'
-                repository: 'devopslearningacr'
+                repository: 'weather-app'
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
                 tags: 'latest'
