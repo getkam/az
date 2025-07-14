@@ -44,9 +44,9 @@ steps:
     API_KEY: $(API_KEY)
 
 - script: |
-    echo "ACR_NAME: $(ACR_NAME)
-    echo "IMAGE_NAME: $(IMAGE_NAME)
-    echo "IMAGE_TAG: $(IMAGE_TAG)
+    echo "ACR_NAME: $(ACR_NAME)"
+    echo "IMAGE_NAME: $(IMAGE_NAME)"
+    echo "IMAGE_TAG: $(IMAGE_TAG)"
     echo "IMAGE TAG: $(ACR_NAME)/$(IMAGE_NAME):$(IMAGE_TAG)"
     echo "REPOSITORY: $(IMAGE_NAME)"
   displayName: 'Debug: Check image tag values'
