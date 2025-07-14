@@ -10,6 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
+  TEST: 'test'
   ACR_LOGIN_SERVER: 'devopslearningacr.azurecr.io'
   IMAGE_NAME: 'weather-app'
   IMAGE_TAG: 'latest'
