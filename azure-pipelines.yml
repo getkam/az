@@ -43,6 +43,11 @@ steps:
   env:
     API_KEY: $(API_KEY)
 
+- script: |
+    echo "IMAGE TAG: $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)"
+    echo "REPOSITORY: $(IMAGE_NAME)"
+  displayName: 'Debug: Check image tag values'
+
 #--------DOCKER-------------
 - task: Docker@2
   displayName: 'Log in to ACR'
