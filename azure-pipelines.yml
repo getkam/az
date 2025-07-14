@@ -57,7 +57,7 @@ steps:
     Dockerfile: 'Dockerfile'
     tags: |
       $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
-    repository: $(ACR_NAME).azurecr.io/$(IMAGE_NAME)
+    repository: $(IMAGE_NAME)
 
 - task: Docker@2
   displayName: 'Push Docker image'
