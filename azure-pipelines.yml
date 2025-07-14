@@ -64,11 +64,11 @@ steps:
   inputs:
     command: build
     Dockerfile: 'Dockerfile'
-    tags: $(ACR_LOGIN_SERVER)/$(IMAGE_NAME):$(IMAGE_TAG)
+    tags: devopslearningacr.azurecr.io/weather-app:latest
     repository: $(IMAGE_NAME)
 
 - task: Docker@2
   displayName: 'Push Docker image'
   inputs:
     command: push
-    tags: $(ACR_LOGIN_SERVER)/$(IMAGE_NAME):$(IMAGE_TAG)
+    tags: devopslearningacr.azurecr.io/weather-app:latest
