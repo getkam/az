@@ -47,7 +47,7 @@ stages:
             - task: Docker@2
               inputs:
                 containerRegistry: 'mg_conn'
-                repository: 'devopslearningacr.azurecr.io/weather-app'
+                repository: 'weather-app'
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
                 tags: '$(Build.BuildId)'
@@ -63,4 +63,4 @@ stages:
                 scriptType: 'pscore'
                 scriptLocation: 'scriptPath'
                 scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
-                arguments: '-registryName mg_conn -repository devopslearningacr.azurecr.io -tag $(Build.BuildId)'
+                arguments: '-registryName mg_conn -repository weather-app -tag $(Build.BuildId)'
