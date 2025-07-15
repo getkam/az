@@ -57,5 +57,5 @@ stages:
                 scriptType: 'ps'
                 scriptLocation: 'scriptPath'
                 
-                scriptPath: '$(Build.SourcesDirectory)scripts/ImageScanSummaryAssessmentGate.ps1'
+                scriptPath: '$(Build.SourceDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
                 arguments: '-registryName mg_conn -repository devopslearningacr.azurecr.io -tag $(Build.BuildId)'
