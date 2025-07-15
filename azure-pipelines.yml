@@ -62,6 +62,5 @@ stages:
                 azureSubscription: 'qm-sandbox-0(d1622704-4fc1-48dd-b43b-a906e4294c56)'
                 scriptType: 'ps'
                 scriptLocation: 'scriptPath'
-                
                 scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
                 arguments: '-registryName mg_conn -repository devopslearningacr.azurecr.io -tag $(Build.BuildId)'
