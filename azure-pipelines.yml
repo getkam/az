@@ -51,11 +51,17 @@ stages:
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
                 tags: '$(Build.BuildId)'
+    - stage: Security_Scan
+      displayName: Security scan
+      jobs:
+        - job: security_scan
+          displayName: Security Scan
+          steps:
             - task: AzureCLI@2
               inputs:
                 azureSubscription: 'qm-sandbox-0(d1622704-4fc1-48dd-b43b-a906e4294c56)'
                 scriptType: 'ps'
                 scriptLocation: 'scriptPath'
                 
-                scriptPath: '$(Build.SourceDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
+                scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
                 arguments: '-registryName mg_conn -repository devopslearningacr.azurecr.io -tag $(Build.BuildId)'
