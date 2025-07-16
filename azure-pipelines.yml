@@ -42,11 +42,11 @@ stages:
           steps:
             - task: Docker@2
               inputs:
-                containerRegistry: 'mg_conn'
+                containerRegistry: 'mgConn'
                 command: 'login'
             - task: Docker@2
               inputs:
-                containerRegistry: 'mg_conn'
+                containerRegistry: 'mgConn'
                 repository: 'weather-app'
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
@@ -59,9 +59,9 @@ stages:
           steps:
           - task: AzureCLI@2
             inputs:
-              azureSubscription: 'arm_conn'
+              azureSubscription: 'armConn'
               scriptType: 'pscore'
               scriptLocation: 'scriptPath'
               scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
-              arguments: '-registryName mg_conn -repository weather-app -tag $(Build.BuildId)'
+              arguments: '-registryName mgConn -repository weather-app -tag $(Build.BuildId)'
             
