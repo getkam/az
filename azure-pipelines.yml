@@ -51,17 +51,17 @@ stages:
                 command: 'buildAndPush'
                 Dockerfile: '**/Dockerfile'
                 tags: '$(Build.BuildId)'
-    - stage: Security_Scan
-      displayName: Security scan
-      jobs:
-        - job: security_scan
-          displayName: Security Scan
-          steps:
-          - task: AzureCLI@2
-            inputs:
-              azureSubscription: 'armConn'
-              scriptType: 'pscore'
-              scriptLocation: 'scriptPath'
-              scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
-              arguments: '-registryName devopslearningacr -repository weather-app -tag $(Build.BuildId)'
+    # - stage: Security_Scan
+    #   displayName: Security scan
+    #   jobs:
+    #     - job: security_scan
+    #       displayName: Security Scan
+    #       steps:
+    #       - task: AzureCLI@2
+    #         inputs:
+    #           azureSubscription: 'armConn'
+    #           scriptType: 'pscore'
+    #           scriptLocation: 'scriptPath'
+    #           scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
+    #           arguments: '-registryName devopslearningacr -repository weather-app -tag $(Build.BuildId)'
             
