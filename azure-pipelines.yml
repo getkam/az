@@ -57,10 +57,11 @@ stages:
         - job: security_scan
           displayName: Security Scan
           steps:
-            - task: AzureCLI@2
-              inputs:
-                azureSubscription: 'qm-sandbox-0(d1622704-4fc1-48dd-b43b-a906e4294c56)'
-                scriptType: 'pscore'
-                scriptLocation: 'scriptPath'
-                scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
-                arguments: '-registryName mg_conn -repository weather-app -tag $(Build.BuildId)'
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'qm-sandbox-0(d1622704-4fc1-48dd-b43b-a906e4294c56)'
+              scriptType: 'pscore'
+              scriptLocation: 'scriptPath'
+              scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
+              arguments: '-registryName mg_conn -repository weather-app -tag $(Build.BuildId)'
+            
