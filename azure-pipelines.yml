@@ -63,5 +63,5 @@ stages:
               scriptType: 'pscore'
               scriptLocation: 'scriptPath'
               scriptPath: '$(Build.SourcesDirectory)/scripts/ImageScanSummaryAssessmentGate.ps1'
-              arguments: '-registryName mgConn -repository weather-app -tag $(Build.BuildId)'
+              arguments: '-registryName devopslearningacr -repository weather-app -tag $(Build.BuildId)'
             
