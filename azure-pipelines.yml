@@ -3,6 +3,13 @@ name: Weather_app
 trigger:
     - main
 
+resources:
+  repositories:
+    - repository: self
+      type: git
+      name: getkam/az
+      connection: github.com_getkam
+
 stages:
     - stage: Build_and_Test
       displayName: Build and Test
